@@ -1,23 +1,17 @@
-angular.module('personalSite', ['ui.bootstrap']).controller('DropdownCtrl', function ($scope, $log) {
-  $scope.items = [
-    'The first choice!',
-    'And another choice for you.',
-    'but wait! A third!'
-  ];
+(function() {
+  var app = angular.module('personalSite', []);
 
-  $scope.status = {
-    isopen: false
-  };
+  app.controller('PageController', function() {
+    this.page = 1;
+    console.log("Page is set to: "+1);
 
-  $scope.toggled = function(open) {
-    $log.log('Dropdown is now: ', open);
-  };
+    this.isSet = function(checkPage) {
+      return this.page === checkPage;
+    }
 
-  $scope.toggleDropdown = function($event) {
-    $event.preventDefault();
-    $event.stopPropagation();
-    $scope.status.isopen = !$scope.status.isopen;
-  };
-
-  $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
-});
+    this.setPage = function(setPage) {
+      this.page = setPage;
+      console.log("Page is set to: "+setPage);
+    };
+  });
+})();

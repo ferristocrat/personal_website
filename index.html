@@ -1,156 +1,76 @@
 <!DOCTYPE html>
 <html ng-app="personalSite">
 <head>
-	<meta charset="utf-8">
-	<title>Ferristocrat</title>
-	<link rel="stylesheet" type="text/css" href="bootstrap.css">
-	<script type="text/javascript" src="angular.js"></script>
-	<script type="text/javascript" src="ui-bootstrap.js"></script>
-	<script type="text/javascript" src="main.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Raleway|Lato|Open+Sans|Hind' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 </head>
-<body>
-<div ng-controller="DropdownCtrl">
-    <!-- Simple dropdown -->
-    <span uib-dropdown on-toggle="toggled(open)">
-      <a href id="simple-dropdown" uib-dropdown-toggle>
-        Click me for a dropdown, yo!
-      </a>
-      <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
-        <li ng-repeat="choice in items">
-          <a href>{{choice}}</a>
-        </li>
-      </ul>
-    </span>
 
-    <!-- Single button -->
-    <div class="btn-group" uib-dropdown is-open="status.isopen">
-      <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
-        Button dropdown <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-        <li role="menuitem"><a href="#">Action</a></li>
-        <li role="menuitem"><a href="#">Another action</a></li>
-        <li role="menuitem"><a href="#">Something else here</a></li>
-        <li class="divider"></li>
-        <li role="menuitem"><a href="#">Separated link</a></li>
-      </ul>
-    </div>
 
-    <!-- Split button -->
-    <div class="btn-group" uib-dropdown>
-      <button id="split-button" type="button" class="btn btn-danger">Action</button>
-      <button type="button" class="btn btn-danger" uib-dropdown-toggle>
-        <span class="caret"></span>
-        <span class="sr-only">Split button!</span>
-      </button>
-      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
-        <li role="menuitem"><a href="#">Action</a></li>
-        <li role="menuitem"><a href="#">Another action</a></li>
-        <li role="menuitem"><a href="#">Something else here</a></li>
-        <li class="divider"></li>
-        <li role="menuitem"><a href="#">Separated link</a></li>
-      </ul>
-    </div>
+<body ng-controller="PageController as page">
 
-    <!-- Single button using append-to-body -->
-    <div class="btn-group" uib-dropdown dropdown-append-to-body>
-      <button id="btn-append-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle>
-        Dropdown on Body <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
-        <li role="menuitem"><a href="#">Action</a></li>
-        <li role="menuitem"><a href="#">Another action</a></li>
-        <li role="menuitem"><a href="#">Something else here</a></li>
-        <li class="divider"></li>
-        <li role="menuitem"><a href="#">Separated link</a></li>
-      </ul>
-    </div>
-
-    <!-- Single button using template-url -->
-    <div class="btn-group" uib-dropdown>
-      <button id="button-template-url" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
-        Dropdown using template <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" uib-dropdown-menu template-url="dropdown.html" aria-labelledby="button-template-url">
-      </ul>
-    </div>
-
-    <hr />
-    <p>
-        <button type="button" class="btn btn-default btn-sm" ng-click="toggleDropdown($event)">Toggle button dropdown</button>
-        <button type="button" class="btn btn-warning btn-sm" ng-click="disabled = !disabled">Enable/Disable</button>
-    </p>
-
-    <hr>
-    <!-- Single button with keyboard nav -->
-    <div class="btn-group" uib-dropdown keyboard-nav>
-        <button id="simple-btn-keyboard-nav" type="button" class="btn btn-primary" uib-dropdown-toggle>
-            Dropdown with keyboard navigation <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">
-            <li role="menuitem"><a href="#">Action</a></li>
-            <li role="menuitem"><a href="#">Another action</a></li>
-            <li role="menuitem"><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li role="menuitem"><a href="#">Separated link</a></li>
-        </ul>
-    </div>
-
-    <hr>
-    <!-- AppendTo use case -->
-    <h4>append-to vs. append-to-body vs. inline example</h4>
-    <div id="dropdown-scrollable-container" style="height: 15em; overflow: auto;">
-      <div id="dropdown-long-content">
-        <div id="dropdown-hidden-container">
-          <div class="btn-group" uib-dropdown keyboard-nav dropdown-append-to="appendToEl">
-            <button id="btn-append-to" type="button" class="btn btn-primary" uib-dropdown-toggle>
-              Dropdown in Container <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to">
-              <li role="menuitem"><a href="#">Action</a></li>
-              <li role="menuitem"><a href="#">Another action</a></li>
-              <li role="menuitem"><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li role="menuitem"><a href="#">Separated link</a></li>
-            </ul>
-          </div>
-          <div class="btn-group" uib-dropdown dropdown-append-to-body>
-            <button id="btn-append-to-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle>
-              Dropdown on Body <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-to-body">
-              <li role="menuitem"><a href="#">Action</a></li>
-              <li role="menuitem"><a href="#">Another action</a></li>
-              <li role="menuitem"><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li role="menuitem"><a href="#">Separated link</a></li>
-            </ul>
-          </div>
-          <div class="btn-group" uib-dropdown>
-            <button id="btn-append-to-single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
-              Inline Dropdown <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
-              <li role="menuitem"><a href="#">Action</a></li>
-              <li role="menuitem"><a href="#">Another action</a></li>
-              <li role="menuitem"><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li role="menuitem"><a href="#">Separated link</a></li>
-            </ul>
-          </div>
+<!-- Navigation -->
+<section>
+    <ul class="navbar">
+        <div class="nav-left">
+            <li>
+                <a href ng-click="page.setPage(1)">Ferristocrat</a>
+            </li>
         </div>
-      </div>
-    </div>
+        <div class="nav-right">
+            <li ng-class="{ active:page.isSet(1) }">
+                <a href ng-click="page.setPage(1)">Home</a>
+            </li>
+            <li ng-class="{ active:page.isSet(2) }">
+                <a href ng-click="page.setPage(2)">About</a>
+            </li>
+            <li ng-class="{ active:page.isSet(3) }">
+                <a href ng-click="page.setPage(3)">Blog</a>
+            </li>
+            <li ng-class="{ active:page.isSet(4) }">
+                <a href ng-click="page.setPage(4)">Contact</a>
+            </li>
+        </div>
+    </ul>
+</section>
+<!-- End Navigation-->
 
-    <script type="text/ng-template" id="dropdown.html">
-        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="button-template-url">
-          <li role="menuitem"><a href="#">Action in Template</a></li>
-          <li role="menuitem"><a href="#">Another action in Template</a></li>
-          <li role="menuitem"><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li role="menuitem"><a href="#">Separated link in Template</a></li>
-        </ul>
-    </script>
-</div>
+<!-- Home Page -->
+<section ng-show="page.isSet(1)">
+    <div class="main-content">
+        <h1>Michael Ferris</h1>
+        <h4>Consultant by day | entrepreneur and coder by night</h4>
+        <a href ng-click="page.setPage(2)" class="button button1">Learn more about me</a>
+    </div>
+</section>
+<!-- End Home Page-->
+
+<!-- About Page -->
+<section ng-show="page.isSet(2)">
+    <div class="main-content">
+        <img src="michael.png">
+        <h5 class="intro">Hi, I'm Michael. I am an analytics consultant and web application developer living and working in the Washington, DC Metro Area. I received my BA in Economics and Political Science from the University of Vermont, where I also completed a minor in Mathematics back in 2013. I am passionate about all things technology.  This website has gone through multiple iterations as I experiment with different technologies and web development tools. The current iteration was built from the ground up using <a href="https://angularjs.org/"> Angular</a>.</h5>
+    </div>
+</section>
+<!-- End About Page-->
+
+<!-- Blog Page -->
+<section ng-show="page.isSet(3)">
+    <div class="main-content">
+        <h1>Blog page goes here</h1>
+    </div>
+</section>
+<!-- End Blog Page -->
+
+<!-- Contact Page -->
+<section ng-show="page.isSet(4)">
+    <div class="main-content">
+        <h1>Contact page goes here</h1>
+    </div>
+</section>
+<!-- End Contact Page -->
+
 </body>
 </html>
