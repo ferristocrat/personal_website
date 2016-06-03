@@ -67,9 +67,13 @@
 <!-- End About Page-->
 
 <!-- Blog Page -->
-<section ng-show="page.isSet(3)">
+<section ng-show="page.isSet(3)" ng-controller="BlogController as blog">
+    <div ng-repeat="post in blog.posts | orderBy:'-date'">
     <div class="main-content">
-        <h1>Blog page goes here</h1>
+        <h1>{{post.title}}</h1>
+        <h3>{{post.description}}</h3>
+        <h5>{{post.content}}</h5>
+        <p>{{post.date | date}}</p>
     </div>
 </section>
 <!-- End Blog Page -->
@@ -77,7 +81,13 @@
 <!-- Contact Page -->
 <section ng-show="page.isSet(4)">
     <div class="main-content">
-        <h1>Contact page goes here</h1>
+        <h1>Contact Me</h1>
+        <div class="row">
+            <a href="https://www.linkedin.com/in/michaelmike"><img src="images/icons/linkedin.png" /></a>
+            <a href="https://github.com/ferristocrat"><img src="images/icons/github.png" /></a>     
+            <a href="https://www.instagram.com/m802dc/"><img src="images/icons/instagram.png" /></a>        
+            <a href="https://twitter.com/ferristocrat"><img src="images/icons/twitter.png" />
+        </div>
     </div>
 </section>
 <!-- End Contact Page -->

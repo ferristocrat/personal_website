@@ -27,4 +27,21 @@
       this.minimenu = 1;
     };
   });
+
+  app.controller('BlogController', function() {
+    this.posts = blog;
+  });
+
+  var blog = [{
+    title: 'First Post',
+    description: 'Tagline of first post',
+    content: 'content of first post',
+    date: 1464821402591
+    }, {
+    title: 'Second Post',
+    description: 'Tagline of second post',
+    content: 'content of second post',
+    date: 1464821402592    
+    }];
+
 })();
