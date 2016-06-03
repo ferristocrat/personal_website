@@ -21,12 +21,12 @@
         </div>
         <div class="nav-right">
             <li>
-                <a ng-show="page.menuState(1)" class="open-nav" href ng-click="page.navOpen()"><img src="menu.png"></a>
+                <a ng-show="page.menuState(1)" class="open-nav" href ng-click="page.navOpen()"><img src="images/menu.png"></a>
             </li>
             <li>
-                <a ng-show="page.menuState(2)" class="close-nav" href ng-click="page.navClose()"><img src="cross.png"></a>
+                <a ng-show="page.menuState(2)" class="close-nav" href ng-click="page.navClose()"><img src="images/cross.png"></a>
             </li>
-            <li ng-class="{ active:page.isSet(1) }">
+            <li ng-hide="page.screenSize()" ng-class="{ active:page.isSet(1) }">
                 <a href ng-click="page.setPage(1)">Home</a>
             </li>
             <li ng-class="{ active:page.isSet(2) }">
@@ -57,7 +57,7 @@
 <section ng-show="page.isSet(2)">
     <div class="main-content">
         <div class="about-left">
-            <img class="profile-img" src="michael.png">
+            <img class="profile-img" src="images/michael.png">
         </div>
         <div class="about-right">
             <h5 class="intro">Hi, I'm Michael. I am an analytics consultant and web application developer living and working in the Washington, DC Metro Area. I received my BA in Economics and Political Science from the University of Vermont, where I also completed a minor in Mathematics back in 2013. I am passionate about all things technology.  This website has gone through multiple iterations as I experiment with different technologies and web development tools. The current iteration was built in a few hours <a href="https://angularjs.org/"> Angular</a>.</h5>
@@ -70,9 +70,10 @@
 <section ng-show="page.isSet(3)" ng-controller="BlogController as blog">
     <div ng-repeat="post in blog.posts | orderBy:'-date'">
     <div class="main-content">
-        <h1>{{post.title}}</h1>
-        <h3>{{post.description}}</h3>
-        <h5>{{post.content}}</h5>
+        <h2>{{post.title}}</h2>
+        <h4>- {{post.description}} -</h4>
+        <h5 class="blog-content">{{post.content}}</h5>
+        <h5 class="blog-content"><em>Up next: {{post.upnext}}</em></h5>
         <p>{{post.date | date}}</p>
     </div>
 </section>
