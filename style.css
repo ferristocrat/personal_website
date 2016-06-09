@@ -100,16 +100,16 @@ li:last-child {
 }
 
 .navbar .nav-right li a:hover:not(.active) {
-    background-color: #691d9b;
+    background-color: rgba(0, 0, 0, .5);
 }
 
 .navbar .nav-right .active {
-    background-color: #8b26cd;
+    background-color: rgba(0, 0, 0, .25);
 }
 
 .main-content {
     overflow: hidden;
-    background: rgba(255, 255, 255, .7);
+    background: rgba(255, 255, 255, .85);
     margin: 20px;
     padding: 20px;
     text-align: center;
@@ -130,6 +130,10 @@ li:last-child {
 
 .blog-content {
     text-align: justify;
+}
+
+.mobile-nav-toggle {
+    display: none;
 }
 
 @media screen and (max-width: 870px) {
@@ -165,11 +169,17 @@ li:last-child {
         z-index: 1;
     }
 
-    .nav-right {
+    .nav-desktop {
+        display: none;
+    }
 
-        z-index: 0;
-        display: ;
-        float: right;
+    .nav-mobile {
+        float: left;
+        width: 100%;
+    }
+
+    .navbar .nav-mobile li:hover:not(.active) {
+        background-color: rgba(0, 0, 0, .25);
     }
 
     .profile-img {
@@ -178,6 +188,10 @@ li:last-child {
 
     h4 {
         font-size: 1.1em;
+    }
+
+    .mobile-nav-toggle {
+        display: inline;
     }
 }
 

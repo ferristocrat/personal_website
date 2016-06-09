@@ -20,22 +20,41 @@
             </li>
         </div>
         <div class="nav-right">
+            <div class="mobile-nav-toggle">
+                <li>
+                    <a ng-show="page.menuState(1)" class="open-nav" href ng-click="page.navOpen()"><img src="images/menu.png"></a>
+                </li>
+                <li>
+                    <a ng-show="page.menuState(2)" class="close-nav" href ng-click="page.navClose()"><img src="images/cross.png"></a>
+                </li>
+            </div>
+            <div class=nav-desktop>
+                <li ng-class="{ active:page.isSet(1) }">
+                    <a href ng-click="page.setPage(1)">Home</a>
+                </li>
+                <li ng-class="{ active:page.isSet(2) }">
+                    <a href ng-click="page.setPage(2)">About</a>
+                </li>
+                <li ng-class="{ active:page.isSet(3) }">
+                    <a href ng-click="page.setPage(3)">Blog</a>
+                </li>
+                <li ng-class="{ active:page.isSet(4) }">
+                    <a href ng-click="page.setPage(4)">Contact</a>
+                </li>
+            </div>
+        </div>
+
+        <div class="nav-mobile" ng-hide="page.menuState(1)">
             <li>
-                <a ng-show="page.menuState(1)" class="open-nav" href ng-click="page.navOpen()"><img src="images/menu.png"></a>
-            </li>
-            <li>
-                <a ng-show="page.menuState(2)" class="close-nav" href ng-click="page.navClose()"><img src="images/cross.png"></a>
-            </li>
-            <li ng-hide="page.screenSize()" ng-class="{ active:page.isSet(1) }">
                 <a href ng-click="page.setPage(1)">Home</a>
             </li>
-            <li ng-class="{ active:page.isSet(2) }">
+            <li>
                 <a href ng-click="page.setPage(2)">About</a>
             </li>
-            <li ng-class="{ active:page.isSet(3) }">
+            <li>
                 <a href ng-click="page.setPage(3)">Blog</a>
             </li>
-            <li ng-class="{ active:page.isSet(4) }">
+            <li>
                 <a href ng-click="page.setPage(4)">Contact</a>
             </li>
         </div>
@@ -71,7 +90,7 @@
     <div ng-repeat="post in blog.posts | orderBy:'-date'">
     <div class="main-content">
         <h2>{{post.title}}</h2>
-        <h4>- {{post.description}} -</h4>
+        <h4>{{post.description}}</h4>
         <h5 class="blog-content">{{post.content}}</h5>
         <h5 class="blog-content"><em>Up next: {{post.upnext}}</em></h5>
         <p>{{post.date | date}}</p>
